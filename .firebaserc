@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-fireship-tutoria-53b83": {
+      "hosting": {
+        "freedom-wall": [
+          "angular-fireship-tutoria-53b83"
+        ]
+      }
+    }
+  }
+}

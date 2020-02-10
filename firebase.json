@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "freedom-wall",
+      "public": "dist/freedom-wall",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
