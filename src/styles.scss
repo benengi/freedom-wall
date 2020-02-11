@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import url("https://use.typekit.net/jnq3uxd.css");
+
+$custom-typography: mat-typography-config(
+    $font-family: 'sofia-pro'
+);
+
+@include mat-core($custom-typography);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
