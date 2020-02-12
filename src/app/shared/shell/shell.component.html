@@ -24,8 +24,8 @@
 
       <span class="fill-space"></span>
       <div *ngIf="!(isHandset$ | async)">
-        <a mat-button routerLink="/login" *ngIf="!(afAuth.authState | async)">🔑 Login</a>
-        <a mat-button routerLink="/login" *ngIf="afAuth.authState | async as user" >
+        <a mat-button routerLink="/login" *ngIf="!user">🔑 Login</a>
+        <a mat-button routerLink="/profile" *ngIf="user" >
           <img class="avatar" [src]="user.photoURL || 'assets/default-user.svg'">
           Profile
         </a>
