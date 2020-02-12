@@ -1,1 +1,5 @@
-<p>profile-page works!</p>
+<p>
+  Logged in as <strong>{{ user?.email }}</strong>
+</p>
+
+<button mat-stroked-button (click)="auth.signOut()">Logout</button>

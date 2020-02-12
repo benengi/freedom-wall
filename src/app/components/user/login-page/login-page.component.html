@@ -1,11 +1,8 @@
 <main>
   <!-- Logged In -->
   <div *ngIf="auth.user$ | async as user" class="logout">
-    <p>
-      Logged in as <strong>{{ user.email }}</strong>
-    </p>
-
-    <button mat-stroked-button (click)="auth.signOut()">Logout</button>
+    <!-- Later redirect to actual profile page-->
+    <app-profile-page [user]="user"></app-profile-page>
   </div>
 
   <!-- Logged Out -->
