@@ -13,12 +13,23 @@ export class AuthService {
     this.user$ = this.getUserObservable();
   }
 
+  signOut(): Promise<void> {
+    return this.afAuth.auth.signOut();
+  }
+
   private getUserObservable(): Observable<User> {
     return this.afAuth.authState.pipe(
-      map(firebaseUser => ({
-        username : firebaseUser.uid,
-        email: firebaseUser.email
-      }))
+      map(firebaseUser => {
+        if (firebaseUser) {
+          return {
+            username : firebaseUser.uid,
+            email: firebaseUser.email,
+            photoURL: firebaseUser.photoURL
+          };
+        } else {
+          return null;
+        }
+      })
     );
   }
 

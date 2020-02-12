@@ -1,15 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-<<<<<<< HEAD
-
-
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
-=======
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -61,6 +52,5 @@ const angularModules = [
     ...angularModules,
     ...materialModules
   ],
->>>>>>> 81a70f2b5204c5ba5fd0897dca76cc1b03851740
 })
 export class SharedModule { }

@@ -1,3 +1,8 @@
-<app-shell>
+<app-shell *ngIf="!isLoading; else loading" [user]="user">
   <router-outlet></router-outlet>
 </app-shell>
+
+<ng-template #loading>
+  <!--Temporary Loading-->
+  Loading...
+</ng-template>
