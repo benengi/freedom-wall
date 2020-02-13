@@ -1,6 +1,15 @@
 <main>
   <div class="board">
-
+    <div
+    class="new-post"
+    cdkDrag
+    cdkDragBoundary=".board"
+    (click)="openPost()">
+      <div class="post-contents">
+        <h2>New Post</h2>
+        <p>Contents</p>
+      </div>
+    </div>
   </div>
 </main>
 
