@@ -6,7 +6,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./components/user/user.module').then(m => m.UserModule)
-  }
+  },
+  {
+    path: 'wall',
+    loadChildren: () => import('./components/wall/wall.module').then(m => m.WallModule)
+  },
 
 ];
 
