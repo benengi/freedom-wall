@@ -41,10 +41,10 @@ export class NewBoardPostComponent implements OnInit {
 
   onSubmit() {
     const title = this.title.value;
-    const name = this.author.value || 'Anonymous';
+    const author = this.author.value;
     const contents = this.contents.value;
 
-    this.dialogRef.close({title, name, contents});
+    this.dialogRef.close({title, author, contents});
   }
 
   onClose() {

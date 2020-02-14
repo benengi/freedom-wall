@@ -1,7 +1,7 @@
 <main *ngIf="board$ | async as board">
 
   <div class="board">
-    <app-board-post *ngFor="let post of board.boardPosts"></app-board-post>
+    <app-board-post *ngFor="let post of board.boardPosts" [post]="post"></app-board-post>
   </div>
   <button mat-raised-button color="primary" (click)="newPost()">Create a Post</button>
 </main>

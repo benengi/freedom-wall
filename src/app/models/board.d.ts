@@ -10,5 +10,5 @@ interface Post {
   title?: string;
   contents: string;
   uid?: string;
-  authorName?: string;
+  author?: string;
 }
