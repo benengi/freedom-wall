@@ -1,0 +1,32 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="title"
+      placeholder="Title"
+      autocomplete="off"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="author"
+      placeholder="Your Name (Optional)"
+      autocomplete="off"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea
+      matInput
+      matTextareaAutosize
+      formControlName="contents"
+      placeholder="Write Your Post..."
+      autocomplete="off"
+    ></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Post</button>
+  <button mat-raised-button type="submit" color="accent" (click)="onClose()">Close</button>
+</form>

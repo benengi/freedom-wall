@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
+import { WallService } from 'src/app/services/wall/wall.service';
+import { Observable } from 'rxjs';
+import { DialogService } from 'src/app/services/dialog/dialog.service';
+import { NewBoardPostComponent } from '../new-board-post/new-board-post.component';
 import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-board',
@@ -9,20 +13,31 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class BoardComponent implements OnInit {
 
-  @Input() boards: Board[];
-  constructor(public dialog: MatDialog) { }
+  @Input() boardId: string;
 
-  ngOnInit(): void {
+  board$: Observable<Board>;
+  posts: Post[];
+
+  constructor(
+    private wallService: WallService,
+    private dialog: MatDialog) {
+      this.posts = [];
   }
 
-  openPost() {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '250px',
-      data: {name: '', animal: ''}
+  ngOnInit(): void {
+    this.board$ = this.wallService.getBoard(this.boardId);
+  }
+
+  newPost() {
+    const dialogRef = this.dialog.open(NewBoardPostComponent, {
+      width: '500px',
+      data: { boardId: this.boardId }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe((result: Post) => {
+      if (result) {
+        this.wallService.addPost({...result });
+      }
     });
   }
 

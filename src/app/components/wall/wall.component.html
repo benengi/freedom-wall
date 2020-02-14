@@ -1,3 +1,7 @@
 <main>
-  <app-board></app-board>
+  <button appBoardCreate mat-raised-button color="accent">Create a Board</button>
+  <div class="board" *ngFor="let board of boards$ | async">
+    <app-board [boardId]="board.id"></app-board>
+  </div>
+
 </main>

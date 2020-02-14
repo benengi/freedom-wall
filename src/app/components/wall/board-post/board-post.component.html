@@ -1,1 +1,12 @@
-<p>board-post works!</p>
+<div
+class="new-post"
+cdkDrag
+cdkDragBoundary=".board"
+(cdkDragStarted)="handleDragStart($event)"
+(click)="openPost()">
+  <div class="post-contents">
+    <h2>{{ post.title }}</h2>
+    <p class="subtitle">By: {{ post.author }}</p>
+    <p>{{ post.contents}}</p>
+  </div>
+</div>

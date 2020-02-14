@@ -8,16 +8,20 @@ import { BoardPostComponent } from './board-post/board-post.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BoardCreateDirective } from './board-create.directive';
+import { NewBoardPostComponent } from './new-board-post/new-board-post.component';
 
 
 @NgModule({
-  declarations: [WallComponent, BoardComponent, BoardPostComponent],
+  declarations: [WallComponent, BoardComponent, BoardPostComponent, BoardCreateDirective, NewBoardPostComponent],
   imports: [
     CommonModule,
     WallRoutingModule,
     SharedModule,
     DragDropModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ]
 })
 export class WallModule { }

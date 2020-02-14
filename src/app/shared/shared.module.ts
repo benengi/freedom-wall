@@ -15,11 +15,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { ShellComponent } from './shell/shell.component';
-import { DialogComponent } from './dialog/dialog.component';
 
 const components = [
-  ShellComponent,
-  DialogComponent
+  ShellComponent
 ];
 
 const materialModules = [
