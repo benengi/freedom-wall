@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkDragStart } from '@angular/cdk/drag-drop';
+import { NewBoardPostComponent } from '../new-board-post/new-board-post.component';
+import { WallService } from 'src/app/services/wall/wall.service';
 
 @Component({
   selector: 'app-board-post',
@@ -11,9 +12,13 @@ import { CdkDragStart } from '@angular/cdk/drag-drop';
 export class BoardPostComponent implements OnInit {
 
   @Input() post: Post;
+  @Input() board: Board;
+  @Input() idx: number;
 
   public dragging: boolean;
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    private wall: WallService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -28,13 +33,21 @@ export class BoardPostComponent implements OnInit {
       return;
     }
 
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '250px',
-      data: {name: '', animal: ''}
+    const dialogRef = this.dialog.open(NewBoardPostComponent, {
+      width: '300px',
+      data: {
+        title: this.post.title,
+        author: this.post.author,
+        contents: this.post.contents,
+        boardId: this.post.boardId
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if (result) {
+        this.board.posts[this.idx] = result;
+        this.wall.updatePosts(this.board.id, this.board.posts);
+      }
     });
   }
 }

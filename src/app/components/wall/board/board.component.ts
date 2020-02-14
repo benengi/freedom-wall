@@ -31,11 +31,13 @@ export class BoardComponent implements OnInit {
   newPost() {
     const dialogRef = this.dialog.open(NewBoardPostComponent, {
       width: '500px',
-      data: {name: '', animal: ''}
+      data: { boardId: this.boardId }
     });
 
     dialogRef.afterClosed().subscribe((result: Post) => {
-      this.wallService.addPost(this.boardId, result);
+      if (result) {
+        this.wallService.addPost({...result });
+      }
     });
   }
 

@@ -1,7 +1,7 @@
 interface Board {
   id?: string;
   name: string;
-  boardPosts: Post[]
+  posts: Post[]
   created: Date;
   expiry?: Date;
 }
@@ -11,4 +11,5 @@ interface Post {
   contents: string;
   uid?: string;
   author?: string;
+  boardId: string;
 }

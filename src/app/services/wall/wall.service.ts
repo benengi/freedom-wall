@@ -17,9 +17,9 @@ export class WallService {
   createBoard() {
     return this.db.collection<Board>('boards').add({
       name: 'Temporary Name',
-      boardPosts: null,
+      posts: null,
       created: new Date(),
-      expiry: new Date(99999999999999999)
+      expiry: new Date(999999999999999)
     });
   }
 
@@ -33,11 +33,11 @@ export class WallService {
     return this.db.collection<Board>('boards').valueChanges({idField: 'id'});
   }
 
-  addPost(boardId: string, post: Post) {
+  addPost(post: Post) {
     return this.db.collection('boards')
-      .doc(boardId)
+      .doc(post.boardId)
       .update({
-        boardPosts: firebase.firestore.FieldValue.arrayUnion(post)
+        posts: firebase.firestore.FieldValue.arrayUnion(post)
       });
   }
 

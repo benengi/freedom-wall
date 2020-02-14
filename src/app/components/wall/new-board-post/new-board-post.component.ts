@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { WallService } from 'src/app/services/wall/wall.service';
 
 @Component({
   selector: 'app-new-board-post',
@@ -10,20 +9,19 @@ import { WallService } from 'src/app/services/wall/wall.service';
 })
 export class NewBoardPostComponent implements OnInit {
 
-  post: Post;
   form: FormGroup;
 
   constructor(
-    private wall: WallService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<NewBoardPostComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      title: '',
-      author: '',
-      contents: ''
+      title: this.data.title || '',
+      author: this.data.author || '',
+      contents: this.data.contents || ''
     });
   }
 
@@ -44,7 +42,7 @@ export class NewBoardPostComponent implements OnInit {
     const author = this.author.value;
     const contents = this.contents.value;
 
-    this.dialogRef.close({title, author, contents});
+    this.dialogRef.close({title, author, contents, boardId: this.data.boardId});
   }
 
   onClose() {
