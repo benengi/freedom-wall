@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WallService } from 'src/app/services/wall/wall.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-wall',
@@ -7,14 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WallComponent implements OnInit {
 
-  boards: Board[];
-  constructor() { }
+  boards$: Observable<Board[]>;
+  constructor(private wall: WallService) { }
 
   ngOnInit(): void {
-  }
-
-  createNewPost(boardId: string) {
-
+    this.boards$ = this.wall.getBoards();
   }
 
 }

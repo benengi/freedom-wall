@@ -1,1 +1,10 @@
-<p>board-post works!</p>
+<div
+class="new-post"
+cdkDrag
+cdkDragBoundary=".board"
+(click)="openPost()">
+  <div class="post-contents">
+    <h2>New Post</h2>
+    <p>Contents</p>
+  </div>
+</div>

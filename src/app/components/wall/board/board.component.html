@@ -1,15 +1,8 @@
-<main>
+<main *ngIf="board$ | async as board">
+
   <div class="board">
-    <div
-    class="new-post"
-    cdkDrag
-    cdkDragBoundary=".board"
-    (click)="openPost()">
-      <div class="post-contents">
-        <h2>New Post</h2>
-        <p>Contents</p>
-      </div>
-    </div>
+    <app-board-post *ngFor="let post of board.boardPosts"></app-board-post>
   </div>
+  <button mat-raised-button color="primary" (click)="newPost()">Create a Post</button>
 </main>
 

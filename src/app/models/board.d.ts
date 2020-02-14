@@ -1,12 +1,14 @@
 interface Board {
-  id: string;
+  id?: string;
   name: string;
-  boardPosts: {
-    title: string;
-    contents: string;
-    uid?: string;
-    authorName?: string;
-  };
+  boardPosts: Post[]
   created: Date;
-  expiry: Date;
+  expiry?: Date;
+}
+
+interface Post {
+  title?: string;
+  contents: string;
+  uid?: string;
+  authorName?: string;
 }
