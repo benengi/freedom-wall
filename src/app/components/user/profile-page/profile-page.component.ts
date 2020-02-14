@@ -9,7 +9,13 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class ProfilePageComponent implements OnInit {
 
   @Input() user: User;
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService) {
+    if (!this.user) {
+      this.auth.user$.subscribe(user => {
+        this.user = user;
+      });
+    }
+  }
 
   ngOnInit(): void {
   }
