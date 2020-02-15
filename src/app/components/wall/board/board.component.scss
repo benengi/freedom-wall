@@ -4,8 +4,15 @@ main {
 }
 
 .board {
+  display: flex;
+  flex-wrap: wrap;
+
   border-style: solid;
   width: 90vw;
-  height: 90vh;
+  height: 85vh;
   margin: auto;
+}
+
+app-board-post {
+  height: 200px;
 }

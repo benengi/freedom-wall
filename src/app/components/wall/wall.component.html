@@ -1,4 +1,4 @@
-<main>
+<main *ngIf="auth.user$ | async">
   <!--<button appBoardCreate mat-raised-button color="accent">Create a Board</button>-->
   <div class="board" *ngFor="let board of boards$ | async">
     <app-board [boardId]="board.id"></app-board>

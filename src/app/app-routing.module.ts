@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'wall',
     loadChildren: () => import('./components/wall/wall.module').then(m => m.WallModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
 
 ];
